@@ -1,0 +1,6 @@
+login
+signup
+
+landing page of admin panel (Add CRUD operations on students)
+
+Apply validations
