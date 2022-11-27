@@ -4,12 +4,12 @@
 
         <div>
             <h2 class="font-bold">Email</h2>
-            <input class="border-2 rounded-full w-full py-1 px-3" type="email" name="email" id="email">
+            <input class="border-2 rounded-full w-full py-1 px-3" type="email" name="email" id="email" [(ngModel)]="email">
         </div>
 
         <div>
             <h2 class="font-bold">Password</h2>
-            <input class="border-2 rounded-full w-full py-1 px-3" type="password" name="password" id="password">
+            <input class="border-2 rounded-full w-full py-1 px-3" type="password" name="password" id="password" [(ngModel)]="password">
         </div>
 
         <div class="flex items-center gap-x-2 w-full">
@@ -17,7 +17,8 @@
             <h2 class="font-bold">Remember Me</h2>
         </div>
 
-        <button class="border-2 p-3 rounded-full bg-blue-400 hover:bg-blue-500 ease-in-out duration-300">Login</button>
+        <button class="border-2 p-3 rounded-full bg-blue-400 hover:bg-blue-500 ease-in-out duration-300" (click)="verifyFromDatabase()">Login</button>
+
         <button class="border-2 p-3 rounded-full bg-blue-400 hover:bg-blue-500 ease-in-out duration-300">Register</button>
     </div>
 
