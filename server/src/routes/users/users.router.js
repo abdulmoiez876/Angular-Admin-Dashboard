@@ -1,9 +1,9 @@
 import express from 'express';
-import { getAllUsers } from './users.controller.js';
+import { httpAddUser } from './users.controller.js';
 
 const usersRouter = express.Router();
 
-usersRouter.get('/users', getAllUsers);
+usersRouter.post('/', httpAddUser);
 
 export {
     usersRouter

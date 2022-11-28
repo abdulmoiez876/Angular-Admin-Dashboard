@@ -4,3 +4,8 @@ signup
 landing page of admin panel (Add CRUD operations on students)
 
 Apply validations
+
+
+mongo password: ZBNuaypeCPRBDZoS
+
+connection link: mongodb+srv://admin-dashboard-api:<password>@admin-dashboard-cluster.kzz8ca6.mongodb.net/?retryWrites=true&w=majority

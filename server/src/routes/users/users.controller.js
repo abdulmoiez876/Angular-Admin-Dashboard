@@ -1,9 +1,11 @@
 import { users } from "../../models/users/users.model.js"
+import {addUser} from '../../models/users/users.model.js';
 
-const getAllUsers = (req, res) => {
-    return res.status(200).send(users);
+const httpAddUser = async (req, res) => {
+    await addUser(req.body);
+    return res.status(201).send(req.body);
 }
 
 export {
-    getAllUsers
+    httpAddUser
 }
