@@ -17,7 +17,7 @@ const httpAuthenticateUser = async (req, res) => {
                 userAuthenticated: true
             })
         }
-        return res.status(404).send({
+        return res.status(200).send({
             userAuthenticated: false
         })
     }

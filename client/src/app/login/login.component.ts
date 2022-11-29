@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { map } from 'rxjs';
 
 @Component({
   selector: 'app-login',
@@ -9,6 +10,7 @@ import { HttpClient } from '@angular/common/http';
 export class LoginComponent implements OnInit {
   email: string = '';
   password: string = '';
+  isAuthenticated: boolean = false;
 
   constructor(private http: HttpClient) { }
 
@@ -16,12 +18,13 @@ export class LoginComponent implements OnInit {
   }
 
   verifyFromDatabase() {
-    if(this.email.replace(/\s/g,'').length === 0 || this.password.replace(/\s/g,'').length === 0) {
-      alert('Enter valid email and password');
-    }
-    else {
-       
-    }
+    this.http.post("http://localhost:8000/authenticate", {
+      email: this.email,
+      password: this.password
+    }).subscribe(responseData => {
+      if(responseData.hasOwnProperty('isAuthenticated')) {
+      }
+    })
   }
 
   redirectToDashboard() {

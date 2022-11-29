@@ -4,7 +4,7 @@ import { httpAddUser, httpAuthenticateUser } from './users.controller.js';
 const usersRouter = express.Router();
 
 usersRouter.post('/', httpAddUser);
-usersRouter.get('/', httpAuthenticateUser);
+usersRouter.post('/authenticate', httpAuthenticateUser);
 // usersRouter.get('/{$id}', )
 
 export {
