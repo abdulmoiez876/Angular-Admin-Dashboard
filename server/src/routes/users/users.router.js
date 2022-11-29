@@ -1,9 +1,10 @@
 import express from 'express';
-import { httpAddUser } from './users.controller.js';
+import { httpAddUser, httpAuthenticateUser } from './users.controller.js';
 
 const usersRouter = express.Router();
 
 usersRouter.post('/', httpAddUser);
+usersRouter.get('/', httpAuthenticateUser);
 // usersRouter.get('/{$id}', )
 
 export {
