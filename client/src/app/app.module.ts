@@ -5,11 +5,13 @@ import {HttpClientModule} from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule, routingComponents } from './app-routing.module';
+import { NavbarComponent } from './admin-panel/navbar/navbar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    routingComponents
+    routingComponents,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,

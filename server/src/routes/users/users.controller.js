@@ -1,4 +1,5 @@
 import {addUser, authenticateUser} from '../../models/users/users.model.js';
+import jwt from 'jsonwebtoken';
 
 const httpAddUser = async (req, res) => {
     try {
@@ -13,6 +14,7 @@ const httpAddUser = async (req, res) => {
 const httpAuthenticateUser = async (req, res) => {
     try {
         if(await authenticateUser(req.body) === 1) {
+
             return res.status(200).send({
                 userAuthenticated: true
             })
