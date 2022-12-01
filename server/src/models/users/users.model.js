@@ -17,7 +17,6 @@ const addUser = async (userData) => {
         id: latestId,
         email: userData.email,
         password: userData.password,
-        type: userData.type
     }, {
         upsert: true,
     })
