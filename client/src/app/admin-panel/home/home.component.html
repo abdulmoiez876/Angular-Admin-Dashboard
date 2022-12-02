@@ -1,0 +1,26 @@
+<div class="w-full p-5">
+    <table class="w-full text-center">
+        <thead>
+            <tr>
+                <td class="border p-2 bg-blue-400 font-bold">ID</td>
+                <td class="border p-2 bg-blue-400 font-bold">Name</td>
+                <td class="border p-2 bg-blue-400 font-bold">Current Semester</td>
+                <td class="border p-2 bg-blue-400 font-bold">Degree</td>
+                <td class="border p-2 bg-blue-400 font-bold">Batch</td>
+                <td class="border p-2 bg-blue-400 font-bold">Edit</td>
+                <td class="border p-2 bg-blue-400 font-bold">Delete</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let student of students" class="h-12">
+                <td class="border bg-slate-300">{{student.id}}</td>
+                <td class="border bg-slate-300">{{student.firstName}} {{student.lastName}}</td>
+                <td class="border bg-slate-300">{{student.currentSemester}}</td>
+                <td class="border bg-slate-300">{{student.degree}}</td>
+                <td class="border bg-slate-300">{{student.batch}}</td>
+                <td class="border bg-slate-300 text-blue-600 cursor-pointer"><i class="fa-solid fa-pen-to-square"></i></td>
+                <td class="border bg-slate-300 text-red-600 cursor-pointer"><i class="fa-solid fa-trash"></i></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
