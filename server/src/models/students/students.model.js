@@ -21,6 +21,11 @@ const addStudent = async (studentData) => {
     })
 }
 
+const getStudentsData = async () => {
+    return await students.find({});
+}
+
 export {
-    addStudent
+    addStudent,
+    getStudentsData
 }

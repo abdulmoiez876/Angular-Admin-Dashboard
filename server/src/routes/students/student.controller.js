@@ -1,4 +1,4 @@
-import { addStudent } from "../../models/students/students.model.js";
+import { addStudent, getStudentsData } from "../../models/students/students.model.js";
 
 const httpAddStudent = async (req, res) => {
     try {
@@ -14,6 +14,20 @@ const httpAddStudent = async (req, res) => {
     }
 }
 
+const httpGetStudentsData = async (req, res) => {
+    try {
+        const studentsData = await getStudentsData();
+        res.status(200).send(studentsData);
+    }
+    catch (err) {
+        res.status(404).send({
+            data: [],
+            message: "Couldn't get students data" 
+        })
+    }
+}
+
 export {
-    httpAddStudent
+    httpAddStudent,
+    httpGetStudentsData
 }
