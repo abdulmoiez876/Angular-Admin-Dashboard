@@ -19,7 +19,7 @@
                 <td class="border bg-slate-300">{{student.degree}}</td>
                 <td class="border bg-slate-300">{{student.batch}}</td>
                 <td class="border bg-slate-300 text-blue-600 cursor-pointer"><i class="fa-solid fa-pen-to-square"></i></td>
-                <td class="border bg-slate-300 text-red-600 cursor-pointer"><i class="fa-solid fa-trash"></i></td>
+                <td class="border bg-slate-300 text-red-600 cursor-pointer"  (click)="deleteStudent(student.id)"><i class="fa-solid fa-trash"></i></td>
             </tr>
         </tbody>
     </table>

@@ -9,12 +9,26 @@ import { Student } from 'src/app/shared/student.model.js';
 })
 export class HomeComponent implements OnInit {
   students: Student[] = [];
+  message: String = '';
 
   constructor(private http: HttpClient) { }
 
-  ngOnInit(): void {
-    this.http.get<[Student]>('http://localhost:8000/getStudentsData').subscribe(studentsData => {
+  async getLatestStudentRecords() {
+    await this.http.get<[Student]>('http://localhost:8000/getStudentsData').subscribe(studentsData => {
+      console.log('getting Students');
+      
       this.students = studentsData;
     })
+  }
+
+  async ngOnInit(): Promise<void> {
+    await this.getLatestStudentRecords();
+  }
+
+  async deleteStudent(deleteId: Number) {
+    await (this.http.delete<{message: String}>(`http://localhost:8000/deleteStudent/${deleteId}`).subscribe(async response => {
+      await this.getLatestStudentRecords();
+      this.message = response.message;
+    }));
   }
 }
