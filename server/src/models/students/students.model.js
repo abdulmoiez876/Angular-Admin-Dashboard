@@ -3,7 +3,7 @@ import students from './students.mongo.js';
 const getLatestId = async () => {
     const latestId = await students.findOne().sort('-id');
 
-    if(!latestId) {
+    if (!latestId) {
         return 0;
     }
     return latestId.id;
@@ -17,7 +17,7 @@ const addStudent = async (studentData) => {
         lastName: studentData.lastName,
         currentSemester: studentData.currentSemester,
         batch: studentData.batch,
-        degree: studentData.degree       
+        degree: studentData.degree
     })
 }
 
@@ -25,7 +25,14 @@ const getStudentsData = async () => {
     return await students.find({});
 }
 
+const deleteStudent = async (deleteId) => {
+    await students.findOneAndDelete({
+        id: deleteId
+    })
+}
+
 export {
     addStudent,
-    getStudentsData
+    getStudentsData,
+    deleteStudent
 }

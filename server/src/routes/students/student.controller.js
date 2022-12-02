@@ -1,4 +1,4 @@
-import { addStudent, getStudentsData } from "../../models/students/students.model.js";
+import { addStudent, getStudentsData, deleteStudent } from "../../models/students/students.model.js";
 
 const httpAddStudent = async (req, res) => {
     try {
@@ -27,7 +27,23 @@ const httpGetStudentsData = async (req, res) => {
     }
 }
 
+const httpDeleteStudent = async (req, res) => {
+    try {
+        const deleteId = req.params.id;
+        await deleteStudent(deleteId);
+        res.status(200).send({
+            message: "Student deleted successfully!"
+        })
+    }
+    catch (err) {
+        res.status(404).send({
+            message: "Student could not be deleted!"
+        })
+    }
+}
+
 export {
     httpAddStudent,
-    httpGetStudentsData
+    httpGetStudentsData,
+    httpDeleteStudent
 }
