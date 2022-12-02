@@ -3,10 +3,14 @@ import {addUser, authenticateUser} from '../../models/users/users.model.js';
 const httpAddUser = async (req, res) => {
     try {
         await addUser(req.body);
-        return res.status(201).send(req.body);
+        return res.status(201).send({
+            userCreated: true
+        });
     }
     catch (err) {
-        return res.status(406).send(err);
+        return res.status(406).send({
+            userCreated: false
+        });
     }
 }
 

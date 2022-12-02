@@ -11,7 +11,7 @@ import { NavbarComponent } from './admin-panel/navbar/navbar.component';
   declarations: [
     AppComponent,
     routingComponents,
-    NavbarComponent
+    NavbarComponent,
   ],
   imports: [
     BrowserModule,
