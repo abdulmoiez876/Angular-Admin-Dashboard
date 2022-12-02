@@ -1,7 +1,7 @@
 import users from './users.mongo.js';
 
 const getLatestUserId = async () => {
-    const latestId = await users.findOne().sort('id');
+    const latestId = await users.findOne().sort('-id');
     if (!latestId) {
         return 0;
     }
