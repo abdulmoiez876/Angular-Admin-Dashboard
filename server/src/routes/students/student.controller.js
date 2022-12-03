@@ -1,4 +1,4 @@
-import { addStudent, getStudentsData, deleteStudent } from "../../models/students/students.model.js";
+import { addStudent, getStudentsData, deleteStudent, getStudentById } from "../../models/students/students.model.js";
 
 const httpAddStudent = async (req, res) => {
     try {
@@ -42,8 +42,21 @@ const httpDeleteStudent = async (req, res) => {
     }
 }
 
+const httpGetStudentById = async (req, res) => {
+    try {
+        const studentId = req.params.id;
+        res.status(200).send(await getStudentById(studentId));
+    }
+    catch(err) {
+        res.status(404).send({
+            message: 'Could not find student'
+        })
+    }
+}
+
 export {
     httpAddStudent,
     httpGetStudentsData,
-    httpDeleteStudent
+    httpDeleteStudent,
+    httpGetStudentById
 }

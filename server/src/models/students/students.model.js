@@ -31,8 +31,15 @@ const deleteStudent = async (deleteId) => {
     })
 }
 
+const getStudentById = async (studentId) => {
+    return await students.findOne({
+        id: studentId
+    })
+}
+
 export {
     addStudent,
     getStudentsData,
-    deleteStudent
+    deleteStudent,
+    getStudentById
 }

@@ -1,6 +1,7 @@
 import { Component, OnInit, } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Student } from 'src/app/shared/student.model.js';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -12,7 +13,7 @@ export class HomeComponent implements OnInit {
   message: String = '';
   messageStatus: Boolean = false;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private router: Router) { }
 
   async getLatestStudentRecords() {
     await this.http.get<[Student]>('http://localhost:8000/getStudentsData').subscribe(studentsData => {
@@ -36,5 +37,11 @@ export class HomeComponent implements OnInit {
         this.message = ''
       }, 2000)
     }));
+  }
+
+  editStudent(editId: Number) {
+    this.router.navigate(['/editStudent'], {queryParams: {
+      editId: editId
+    }})
   }
 }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Student } from '../../shared/student.model';
+import { ActivatedRoute } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-edit-student',
@@ -13,11 +14,14 @@ export class EditStudentComponent implements OnInit {
   batch: Number = 0;
   degree: String = '';
 
-  constructor() {
-    
-  }
+  id!: Number;
+
+  constructor(private route: ActivatedRoute, private http: HttpClient) {}
 
   ngOnInit(): void {
+    this.id = Number(this.route.snapshot.queryParamMap.get('editId'));
+
+    
   }
 
 }
