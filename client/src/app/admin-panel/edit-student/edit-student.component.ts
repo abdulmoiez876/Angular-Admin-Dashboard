@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
+import { Student } from '../../shared/student.model';
 
 @Component({
   selector: 'app-edit-student',
@@ -14,13 +15,26 @@ export class EditStudentComponent implements OnInit {
   batch: Number = 0;
   degree: String = '';
 
+  message: String = '';
+  messageStatus: Boolean = false;
+
   id!: Number;
 
   constructor(private route: ActivatedRoute, private http: HttpClient) {}
 
-  ngOnInit(): void {
+  async ngOnInit(): Promise<void> {
     this.id = Number(this.route.snapshot.queryParamMap.get('editId'));
 
+    await this.http.get<Student>(`http://localhost:8000/getStudentById/${this.id}`).subscribe(studentData => {
+      this.firstName = studentData.firstName;
+      this.lastName = studentData.lastName;
+      this.currentSemester = studentData.currentSemester;
+      this.batch = studentData.batch;
+      this.degree = studentData.degree;
+    })
+  }
+
+  async editStudentDetails() {
     
   }
 
