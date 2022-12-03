@@ -1,4 +1,4 @@
-import { addStudent, getStudentsData, deleteStudent, getStudentById } from "../../models/students/students.model.js";
+import { addStudent, getStudentsData, deleteStudent, getStudentById, editStudentById } from "../../models/students/students.model.js";
 
 const httpAddStudent = async (req, res) => {
     try {
@@ -54,9 +54,30 @@ const httpGetStudentById = async (req, res) => {
     }
 }
 
+const httpEditStudentById = async (req, res) => {
+    try {
+        if(await editStudentById(req.body)) {
+            res.status(200).send({
+                message: "Student updated successfully!"
+            })
+        }
+        else {
+            res.status(404).send({
+                message: "Student could not be updated!"
+            })
+        }
+    }
+    catch (err) {
+        res.status(404).send({
+            message: "Student could not be updated!"
+        })
+    }
+}
+
 export {
     httpAddStudent,
     httpGetStudentsData,
     httpDeleteStudent,
-    httpGetStudentById
+    httpGetStudentById,
+    httpEditStudentById
 }

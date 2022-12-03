@@ -37,9 +37,24 @@ const getStudentById = async (studentId) => {
     })
 }
 
+const editStudentById = async (studentData) => {
+    try {
+        await students.updateOne({
+            id: studentData.id
+        }, 
+            studentData
+        )
+        return true;
+    }
+    catch (err) {
+        return false;
+    }
+}
+
 export {
     addStudent,
     getStudentsData,
     deleteStudent,
-    getStudentById
+    getStudentById,
+    editStudentById
 }
