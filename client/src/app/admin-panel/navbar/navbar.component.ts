@@ -14,7 +14,11 @@ export class NavbarComponent implements OnInit {
   }
 
   navigateHome() {
-    this.router.navigate(['/adminPanel'])
+    this.router.navigate(['/adminPanel']);
+  }
+
+  navigateNewStudentForm() {
+    this.router.navigate(['/newStudent']);
   }
 
 }

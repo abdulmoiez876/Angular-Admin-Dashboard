@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { AdminPanelComponent } from "./admin-panel/admin-panel.component";
 import { LoginComponent } from './login/login.component';
 import { EditStudentComponent } from './admin-panel/edit-student/edit-student.component';
+import { NewStudentComponent } from './admin-panel/new-student/new-student.component';
 
 const routes: Routes = [
     {
@@ -21,6 +22,10 @@ const routes: Routes = [
     {
         path: 'editStudent',
         component: EditStudentComponent
+    },
+    {
+        path: 'newStudent',
+        component: NewStudentComponent
     }
 ];
 

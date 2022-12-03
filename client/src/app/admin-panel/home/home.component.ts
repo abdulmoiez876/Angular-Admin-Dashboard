@@ -10,6 +10,7 @@ import { Student } from 'src/app/shared/student.model.js';
 export class HomeComponent implements OnInit {
   students: Student[] = [];
   message: String = '';
+  messageStatus: Boolean = false;
 
   constructor(private http: HttpClient) { }
 
@@ -29,6 +30,11 @@ export class HomeComponent implements OnInit {
     await (this.http.delete<{message: String}>(`http://localhost:8000/deleteStudent/${deleteId}`).subscribe(async response => {
       await this.getLatestStudentRecords();
       this.message = response.message;
+      this.messageStatus = false;
+
+      setTimeout(() => {
+        this.message = ''
+      }, 2000)
     }));
   }
 }
