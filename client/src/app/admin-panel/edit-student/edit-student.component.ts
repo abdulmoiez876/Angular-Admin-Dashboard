@@ -35,7 +35,21 @@ export class EditStudentComponent implements OnInit {
   }
 
   async editStudentDetails() {
-    
+    await this.http.post<{message: String}>('http://localhost:8000/editStudentById', {
+      id: this.id,
+      firstName: this.firstName,
+      lastName: this.lastName,
+      currentSemester: this.currentSemester,
+      batch: this.batch,
+      degree: this.degree
+    }).subscribe(response => {
+      this.message = response.message;
+      this.messageStatus = true;
+
+      setTimeout(() => {
+        this.message = '';
+      }, 2000)
+    })
   }
 
 }
