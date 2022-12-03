@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-new-student',
@@ -15,9 +16,12 @@ export class NewStudentComponent implements OnInit {
   message: String = '';
   messageStatus: Boolean = false;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private route: Router) { }
 
   ngOnInit(): void {
+    if((localStorage.getItem('isAuthenticated')) == 'false') {
+      this.route.navigate(['login']);
+    }
   }
 
   async addNewStudent() {

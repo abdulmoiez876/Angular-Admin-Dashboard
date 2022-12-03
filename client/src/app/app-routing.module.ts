@@ -26,6 +26,10 @@ const routes: Routes = [
     {
         path: 'newStudent',
         component: NewStudentComponent
+    }, 
+    {
+        path: '**',
+        component: LoginComponent
     }
 ];
 

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { Student } from '../../shared/student.model';
 
@@ -20,9 +20,12 @@ export class EditStudentComponent implements OnInit {
 
   id!: Number;
 
-  constructor(private route: ActivatedRoute, private http: HttpClient) {}
+  constructor(private route: ActivatedRoute, private http: HttpClient, private router: Router) {}
 
   async ngOnInit(): Promise<void> {
+    if((localStorage.getItem('isAuthenticated')) == 'false') {
+      this.router.navigate(['login']);
+    }
     this.id = Number(this.route.snapshot.queryParamMap.get('editId'));
 
     await this.http.get<Student>(`http://localhost:8000/getStudentById/${this.id}`).subscribe(studentData => {

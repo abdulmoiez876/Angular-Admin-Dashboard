@@ -17,6 +17,9 @@ export class LoginComponent implements OnInit {
   constructor(private http: HttpClient, private router: Router) { }
 
   ngOnInit(): void {
+    localStorage.setItem('isAuthenticated', 'false');
+    console.log(localStorage.getItem('isAuthenticated'));
+    
   }
 
   verifyFromDatabase() {
@@ -25,6 +28,10 @@ export class LoginComponent implements OnInit {
       password: this.password
     }).subscribe(data => {
       if(data.userAuthenticated) {
+        console.log(localStorage.getItem('isAuthenticated'));
+        localStorage.setItem('isAuthenticated', 'true');
+        console.log(localStorage.getItem('isAuthenticated'));
+
         this.message = '';
         this.email = '';
         this.password = '';
@@ -42,9 +49,6 @@ export class LoginComponent implements OnInit {
       email: this.email,
       password: this.password
     }).subscribe(response => {
-      console.log(response);
-      console.log(this.message);
-      
       if(response.userCreated) {
         this.messageStatus = true;
         this.message = "User created successfully!";
